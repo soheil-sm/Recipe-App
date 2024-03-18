@@ -2,6 +2,8 @@ package org.example.recipie.domain;
 
 import jakarta.persistence.*;
 
+import java.util.Set;
+
 @Entity
 public class Recipe {
     @Id
@@ -14,6 +16,11 @@ public class Recipe {
     private String source;
     private String url;
     private String directions;
+
+//    We want Recipe to own the Ingredient
+//    mappedBy -> We specify property in the child class
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "recipe")
+    private Set<Ingredient> ingredients;
     @Lob
     private Byte[] image;
 
