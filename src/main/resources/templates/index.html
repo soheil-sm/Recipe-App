@@ -6,8 +6,16 @@
 </head>
 <body>
 <h1 th:text="'My Recipes'">Text</h1>
-<h1 th:text="'Hello from the other sides'">Text</h1>
-<h1 th:text="'Hello from the other sides'">Text</h1>
-<h1 th:text="'Hello from the other sides'">Text</h1>
+
+<table>
+    <tr>
+        <th>ID</th>
+        <th>Description</th>
+    </tr>
+    <tr th:each="recipe : ${recipes}">
+        <td th:text="${recipe.id}">123</td>
+        <td th:text="${recipe.description}">description</td>
+    </tr>
+</table>
 </body>
 </html>

@@ -1,7 +1,7 @@
 package org.example.recipie.domain;
 
-import jakarta.persistence.*;
 
+import jakarta.persistence.*;
 import java.math.BigDecimal;
 
 @Entity
@@ -9,14 +9,28 @@ public class Ingredient {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
     @ManyToOne
     private Recipe recipe;
     private String description;
     private BigDecimal amount;
-
-    @OneToOne(fetch = FetchType.EAGER)
+    @ManyToOne(cascade=CascadeType.MERGE)
     private UnitOfMeasure uom;
+
+    public Ingredient(String description, BigDecimal amount, UnitOfMeasure uom) {
+        this.description = description;
+        this.amount = amount;
+        this.uom = uom;
+    }
+
+    public Ingredient(Recipe recipe, String description, BigDecimal amount, UnitOfMeasure uom) {
+        this.recipe = recipe;
+        this.description = description;
+        this.amount = amount;
+        this.uom = uom;
+    }
+
+    public Ingredient() {
+    }
 
     public Long getId() {
         return id;

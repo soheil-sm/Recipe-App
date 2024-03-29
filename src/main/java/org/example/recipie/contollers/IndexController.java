@@ -1,32 +1,29 @@
 package org.example.recipie.contollers;
 
-import org.example.recipie.domain.Category;
-import org.example.recipie.domain.UnitOfMeasure;
-import org.example.recipie.repositories.CategoryRepository;
-import org.example.recipie.repositories.UnitOfMeasureRepository;
+import org.example.recipie.domain.Recipe;
+import org.example.recipie.service.RecipeServiceImpl;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import java.util.Optional;
+import java.util.List;
+import java.util.Set;
 
 @Controller
 public class IndexController {
-    private final UnitOfMeasureRepository unitOfMeasureRepository;
-    private final CategoryRepository categoryRepository;
 
-    public IndexController(UnitOfMeasureRepository unitOfMeasureRepository, CategoryRepository categoryRepository) {
-        this.unitOfMeasureRepository = unitOfMeasureRepository;
-        this.categoryRepository = categoryRepository;
+    private final RecipeServiceImpl recipeService;
+
+    public IndexController(RecipeServiceImpl recipeService) {
+        this.recipeService = recipeService;
     }
 
     @RequestMapping({"", "/", "/index"})
-    public String index() {
+    public String index(Model model) {
+        Set<Recipe> recipes = recipeService.getRecipes();
 
-        Optional<UnitOfMeasure> tablespoon = unitOfMeasureRepository.findByDescription("Tablespoon");
-        Optional<Category> american = categoryRepository.findByDescription("American");
-
-        System.out.println("Cat id is: " + american.get().getId());
-        System.out.println("Measure id is: " + tablespoon.get().getId());
+        System.out.println(recipes.size());
+        model.addAttribute("recipes", recipes);
 
         return "index";
     }
