@@ -1,9 +1,11 @@
 package org.example.recipie.domain;
 
 import jakarta.persistence.*;
+import lombok.*;
 
 import java.util.Set;
 
+@Data
 @Entity
 public class UnitOfMeasure {
 
@@ -12,20 +14,4 @@ public class UnitOfMeasure {
     private Long id;
     @Column(unique = true)
     private String description;
-
-    public UnitOfMeasure(String description) {
-        this.description = description;
-    }
-
-    public UnitOfMeasure() {
-
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public Long getId() {
-        return id;
-    }
 }

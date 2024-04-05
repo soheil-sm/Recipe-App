@@ -11,8 +11,8 @@
     <groupId>org.example</groupId>
     <artifactId>Recipe</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>Recipie</name>
-    <description>Recipie</description>
+    <name>Recipe</name>
+    <description>Recipe</description>
     <properties>
         <java.version>17</java.version>
     </properties>
@@ -24,6 +24,10 @@
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-thymeleaf</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
         </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>

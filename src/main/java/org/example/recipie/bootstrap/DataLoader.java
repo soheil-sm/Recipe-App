@@ -1,5 +1,6 @@
 package org.example.recipie.bootstrap;
 
+import lombok.extern.slf4j.Slf4j;
 import org.example.recipie.domain.*;
 import org.example.recipie.repositories.CategoryRepository;
 import org.example.recipie.repositories.RecipeRepository;
@@ -11,6 +12,7 @@ import org.springframework.stereotype.Component;
 import java.math.BigDecimal;
 import java.util.*;
 
+@Slf4j
 @Component
 public class DataLoader implements ApplicationListener<ContextRefreshedEvent> {
     private final UnitOfMeasureRepository unitOfMeasureRepository;
@@ -26,6 +28,7 @@ public class DataLoader implements ApplicationListener<ContextRefreshedEvent> {
     @Override
     public void onApplicationEvent(ContextRefreshedEvent event) {
         recipeRepository.saveAll(getRecipes());
+        log.debug("Loaded some data ");
     }
 
     public List<Recipe> getRecipes() {

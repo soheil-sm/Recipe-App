@@ -1,5 +1,6 @@
 package org.example.recipie.contollers;
 
+import lombok.extern.slf4j.Slf4j;
 import org.example.recipie.domain.Recipe;
 import org.example.recipie.service.RecipeServiceImpl;
 import org.springframework.stereotype.Controller;
@@ -9,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import java.util.List;
 import java.util.Set;
 
+@Slf4j
 @Controller
 public class IndexController {
 
@@ -20,9 +22,9 @@ public class IndexController {
 
     @RequestMapping({"", "/", "/index"})
     public String index(Model model) {
-        Set<Recipe> recipes = recipeService.getRecipes();
+        log.debug("Im in the Index Controller.");
 
-        System.out.println(recipes.size());
+        Set<Recipe> recipes = recipeService.getRecipes();
         model.addAttribute("recipes", recipes);
 
         return "index";
