@@ -2,8 +2,10 @@ package org.example.recipie.contollers;
 
 import org.example.recipie.domain.Recipe;
 import org.example.recipie.service.RecipeService;
-import org.junit.Before;
-import org.junit.Test;
+//import org.junit.Before;
+//import org.junit.Test;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 import org.mockito.ArgumentCaptor;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
@@ -14,7 +16,7 @@ import org.springframework.ui.Model;
 import java.util.HashSet;
 import java.util.Set;
 
-import static org.junit.Assert.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.Mockito.*;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
@@ -28,12 +30,13 @@ public class IndexControllerTest {
     @Mock
     Model model;
 
-    @Before
+    @BeforeEach
     public void setUp() throws Exception {
         MockitoAnnotations.initMocks(this);
         indexController = new IndexController(recipeService);
     }
 
+//    test spring mvc controller, its bring on mock servlet context
     @Test
     public void testMockMvc() throws Exception {
         MockMvc mockMvc = MockMvcBuilders.standaloneSetup(indexController).build();
