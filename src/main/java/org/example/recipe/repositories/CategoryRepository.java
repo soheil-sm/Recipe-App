@@ -1,6 +1,6 @@
-package org.example.recipie.repositories;
+package org.example.recipe.repositories;
 
-import org.example.recipie.domain.Category;
+import org.example.recipe.domain.Category;
 import org.springframework.data.repository.CrudRepository;
 
 import java.util.Optional;

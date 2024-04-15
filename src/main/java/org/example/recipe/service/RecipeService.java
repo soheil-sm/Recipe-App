@@ -1,6 +1,6 @@
-package org.example.recipie.service;
+package org.example.recipe.service;
 
-import org.example.recipie.domain.Recipe;
+import org.example.recipe.domain.Recipe;
 
 import java.util.Set;
 

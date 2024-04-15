@@ -1,9 +1,7 @@
-package org.example.recipie.domain;
+package org.example.recipe.domain;
 
 import jakarta.persistence.*;
 import lombok.*;
-
-import java.util.Set;
 
 @Data
 @Entity

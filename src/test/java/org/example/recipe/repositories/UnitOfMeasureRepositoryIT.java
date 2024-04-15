@@ -1,6 +1,6 @@
-package org.example.recipie.repositories;
+package org.example.recipe.repositories;
 
-import org.example.recipie.domain.UnitOfMeasure;
+import org.example.recipe.domain.UnitOfMeasure;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,7 +10,6 @@ import java.util.Optional;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-//@RunWith(SpringRunner.class)
 @DataJpaTest
 public class UnitOfMeasureRepositoryIT {
 

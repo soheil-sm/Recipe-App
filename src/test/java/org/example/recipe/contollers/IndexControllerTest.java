@@ -1,9 +1,7 @@
-package org.example.recipie.contollers;
+package org.example.recipe.contollers;
 
-import org.example.recipie.domain.Recipe;
-import org.example.recipie.service.RecipeService;
-//import org.junit.Before;
-//import org.junit.Test;
+import org.example.recipe.domain.Recipe;
+import org.example.recipe.service.RecipeService;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.ArgumentCaptor;
@@ -32,7 +30,7 @@ public class IndexControllerTest {
 
     @BeforeEach
     public void setUp() throws Exception {
-        MockitoAnnotations.initMocks(this);
+        MockitoAnnotations.openMocks(this);
         indexController = new IndexController(recipeService);
     }
 

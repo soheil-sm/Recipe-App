@@ -1,10 +1,10 @@
-package org.example.recipie.bootstrap;
+package org.example.recipe.bootstrap;
 
 import lombok.extern.slf4j.Slf4j;
-import org.example.recipie.domain.*;
-import org.example.recipie.repositories.CategoryRepository;
-import org.example.recipie.repositories.RecipeRepository;
-import org.example.recipie.repositories.UnitOfMeasureRepository;
+import org.example.recipe.domain.*;
+import org.example.recipe.repositories.CategoryRepository;
+import org.example.recipe.repositories.RecipeRepository;
+import org.example.recipe.repositories.UnitOfMeasureRepository;
 import org.springframework.context.ApplicationListener;
 import org.springframework.context.event.ContextRefreshedEvent;
 import org.springframework.stereotype.Component;

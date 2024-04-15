@@ -1,14 +1,12 @@
-package org.example.recipie.contollers;
+package org.example.recipe.contollers;
 
 import lombok.extern.slf4j.Slf4j;
-import org.example.recipie.domain.Recipe;
-import org.example.recipie.service.RecipeService;
-import org.example.recipie.service.RecipeServiceImpl;
+import org.example.recipe.domain.Recipe;
+import org.example.recipe.service.RecipeService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import java.util.List;
 import java.util.Set;
 
 @Slf4j

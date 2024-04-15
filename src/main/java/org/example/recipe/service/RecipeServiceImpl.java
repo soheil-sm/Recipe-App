@@ -1,13 +1,11 @@
-package org.example.recipie.service;
+package org.example.recipe.service;
 
 import lombok.extern.slf4j.Slf4j;
-import org.example.recipie.domain.Recipe;
-import org.example.recipie.repositories.RecipeRepository;
+import org.example.recipe.domain.Recipe;
+import org.example.recipe.repositories.RecipeRepository;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
 import java.util.HashSet;
-import java.util.List;
 import java.util.Set;
 
 @Slf4j

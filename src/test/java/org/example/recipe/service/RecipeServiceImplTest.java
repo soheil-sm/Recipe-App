@@ -1,7 +1,7 @@
-package org.example.recipie.service;
+package org.example.recipe.service;
 
-import org.example.recipie.domain.Recipe;
-import org.example.recipie.repositories.RecipeRepository;
+import org.example.recipe.domain.Recipe;
+import org.example.recipe.repositories.RecipeRepository;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mock;
