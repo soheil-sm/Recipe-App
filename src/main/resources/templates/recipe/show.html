@@ -18,7 +18,7 @@
 <body>
 
 <div class="container-fluid d-flex justify-content-center col-8" style="margin-top: 20px">
-    <div >
+    <div>
         <div class="card border-primary mb-3">
             <div class="card-header bg-primary">
                 <h4 class="card-title text-white" th:text="${recipe.description}">Recipe Description Here!</h4>
@@ -29,10 +29,10 @@
                         <h6>Categories:</h6>
                     </div>
                     <div class="col-md-9">
-                        <ul>
-                            <li>Cat one</li>
-                            <li>Cat tow</li>
-                            <li>Cat three</li>
+                        <ul th:each="category: ${recipe.categories}">
+                            <li th:text="${category.description}">Cat one</li>
+                            <li th:remove="all">Cat tow</li>
+                            <li th:remove="all">Cat three</li>
                         </ul>
                     </div>
                 </div>
@@ -42,13 +42,13 @@
                         <h6>Prep time:</h6>
                     </div>
                     <div class="col-md-3">
-                        <h6>30 min</h6>
+                        <h6 th:text="${recipe.prepTime} + ' Minutes'">30 min</h6>
                     </div>
                     <div class="col-md-3">
                         <h6>Difficulty:</h6>
                     </div>
                     <div class="col-md-3">
-                        <h6>easy</h6>
+                        <h6 th:text="${recipe.difficulty}">easy</h6>
                     </div>
                 </div>
                 <div class="row">
@@ -56,13 +56,13 @@
                         <h6>Cook time:</h6>
                     </div>
                     <div class="col-md-3">
-                        <h6>30 min</h6>
+                        <h6 th:text="${recipe.cookTime} + ' Minutes'">30 min</h6>
                     </div>
                     <div class="col-md-3">
                         <h6>Servings:</h6>
                     </div>
                     <div class="col-md-3">
-                        <h6>4</h6>
+                        <h6 th:text="${recipe.servings}">4</h6>
                     </div>
                 </div>
                 <div class="row">
@@ -70,13 +70,13 @@
                         <h6>Source:</h6>
                     </div>
                     <div class="col-md-3">
-                        <h6>30 min</h6>
+                        <h6 th:text="${recipe.source}">30 min</h6>
                     </div>
                     <div class="col-md-3">
                         <h6>Url:</h6>
                     </div>
                     <div class="col-md-3">
-                        <h6>https://www.example.com</h6>
+                        <h6 th:text="${recipe.url}">https://www.example.com</h6>
                     </div>
                 </div>
             </div>
@@ -89,10 +89,12 @@
             <div class="card-body bg-primary-subtle">
                 <div class="row">
                     <div class="col-md-12">
-                        <ul>
-                            <li>1 Cup Milk</li>
-                            <li>1 Teaspoon Chocolate</li>
-                            <li>1 Teaspoon Sugar</li>
+                        <ul th:each="ingredient: ${recipe.ingredients}">
+                            <li th:text="${(ingredient.amount +
+                                ' ' +   ingredient.uom.description +
+                                ' -- ' +  ingredient.description)}">1 Cup Milk</li>
+                            <li th:remove="all">1 Teaspoon Chocolate</li>
+                            <li th:remove="all">1 Teaspoon Sugar</li>
                         </ul>
                     </div>
                 </div>
@@ -100,12 +102,12 @@
         </div>
         <div class="card border-primary mb-3">
             <div class="card-header bg-primary">
-                <h4 class="card-title text-white">Description</h4>
+                <h4 class="card-title text-white">Directions</h4>
             </div>
             <div class="card-body bg-primary-subtle">
                 <div class="row">
                     <div class="col-md-12">
-                        <p>suspendisse mediocritatem ornare suscipiantur eros petentium neque cu labores novum
+                        <p th:text="${recipe.directions}">suspendisse mediocritatem ornare suscipiantur eros petentium neque cu labores novum
                             idque facilisis mandamus tota nam quis faucibus per possit audire persecuti sapien quod
                             deseruisse aperiri causae quis tempus theophrastus perpetua intellegebat mucius ullamcorper esse
                             affert pertinacia aptent pulvinar eum convallis veri suscipit vulputate ipsum minim pulvinar intellegebat elitr
@@ -121,7 +123,7 @@
             <div class="card-body bg-primary-subtle">
                 <div class="row">
                     <div class="col-md-12">
-                        <p>suspendisse mediocritatem ornare suscipiantur eros petentium neque cu labores novum
+                        <p th:text="${recipe.notes.recipeNotes}">suspendisse mediocritatem ornare suscipiantur eros petentium neque cu labores novum
                             idque facilisis mandamus tota nam quis faucibus per possit audire persecuti sapien quod
                             deseruisse aperiri causae quis tempus theophrastus perpetua intellegebat mucius ullamcorper esse
                             affert pertinacia aptent pulvinar eum convallis veri suscipit vulputate ipsum minim pulvinar intellegebat elitr
@@ -131,7 +133,7 @@
             </div>
         </div>
     </div>
-
 </div>
+
 </body>
 </html>
