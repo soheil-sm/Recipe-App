@@ -4,6 +4,7 @@ import lombok.Synchronized;
 import org.example.recipe.commands.RecipeCommand;
 import org.example.recipe.domain.Recipe;
 import org.springframework.core.convert.converter.Converter;
+import org.springframework.lang.Nullable;
 import org.springframework.stereotype.Component;
 
 @Component
@@ -20,8 +21,12 @@ public class RecipeToRecipeCommand implements Converter<Recipe, RecipeCommand> {
     }
 
     @Synchronized
+    @Nullable
     @Override
     public RecipeCommand convert(Recipe source) {
+        if (source == null)
+            return null;
+
         final RecipeCommand recipeCommand = new RecipeCommand();
 
         recipeCommand.setId(source.getId());
