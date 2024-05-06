@@ -21,7 +21,7 @@ public class Ingredient {
 
     private BigDecimal amount;
 
-    @ManyToOne(cascade = CascadeType.MERGE)
+    @ManyToOne(fetch = FetchType.EAGER)
     private UnitOfMeasure uom;
 
     public Ingredient() {
