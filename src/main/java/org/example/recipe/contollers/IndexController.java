@@ -5,7 +5,7 @@ import org.example.recipe.domain.Recipe;
 import org.example.recipe.service.RecipeService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.GetMapping;
 
 import java.util.Set;
 
@@ -19,7 +19,7 @@ public class IndexController {
         this.recipeService = recipeService;
     }
 
-    @RequestMapping({"", "/", "/index"})
+    @GetMapping({"", "/", "/index"})
     public String index(Model model) {
         log.debug("Im in the Index Controller.");
 

@@ -4,16 +4,15 @@ import lombok.extern.slf4j.Slf4j;
 import org.example.recipe.commands.IngredientCommand;
 import org.example.recipe.commands.RecipeCommand;
 import org.example.recipe.commands.UnitOfMeasureCommand;
-import org.example.recipe.domain.Recipe;
 import org.example.recipe.service.IngredientService;
 import org.example.recipe.service.RecipeService;
 import org.example.recipe.service.UnitOfMeasureService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
 
 @Slf4j
 @Controller
@@ -28,7 +27,7 @@ public class IngredientsController {
         this.uomService = uomService;
     }
 
-    @RequestMapping("/recipe/{recipeId}/ingredients")
+    @GetMapping("/recipe/{recipeId}/ingredients")
     public String listIngredients(@PathVariable String recipeId, Model model) {
         RecipeCommand recipe = recipeService.findCommandById(Long.valueOf(recipeId));
 
@@ -38,7 +37,7 @@ public class IngredientsController {
         return "recipe/ingredients/lists";
     }
 
-    @RequestMapping("/recipe/{recipeId}/ingredient/{ingredientId}/show")
+    @GetMapping("/recipe/{recipeId}/ingredient/{ingredientId}/show")
     public String showIngredient(@PathVariable String recipeId,
                                  @PathVariable String ingredientId, Model model) {
         model.addAttribute("ingredient", ingredientService.findCommandByRecipeIdAndIngredientId(Long.valueOf(recipeId),
@@ -47,7 +46,7 @@ public class IngredientsController {
         return "recipe/ingredients/show";
     }
 
-    @RequestMapping("/recipe/{recipeId}/ingredient/{ingredientId}/update")
+    @GetMapping("/recipe/{recipeId}/ingredient/{ingredientId}/update")
     public String updateIngredient(@PathVariable String recipeId,
                                    @PathVariable String ingredientId, Model model) {
 
@@ -59,7 +58,7 @@ public class IngredientsController {
         return "recipe/ingredients/ingredientform";
     }
 
-    @RequestMapping("/recipe/{recipeId}/ingredient/new")
+    @GetMapping("/recipe/{recipeId}/ingredient/new")
     public String newIngredient(@PathVariable String recipeId, Model model) {
         //make sure we have a good id value
         RecipeCommand recipe = recipeService.findCommandById(Long.valueOf(recipeId));
@@ -78,7 +77,7 @@ public class IngredientsController {
         return "recipe/ingredients/ingredientform";
     }
 
-    @RequestMapping("/recipe/{recipeId}/ingredient/{ingredientId}/delete")
+    @GetMapping("/recipe/{recipeId}/ingredient/{ingredientId}/delete")
     public String deleteIngredient(@PathVariable String recipeId,
                                    @PathVariable String ingredientId) {
 
