@@ -15,7 +15,6 @@ import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
-import org.springframework.ui.Model;
 
 import java.util.HashSet;
 import java.util.Set;
@@ -40,7 +39,6 @@ class IngredientsControllerTest {
     IngredientService ingredientService;
     @Mock
     UnitOfMeasureService uomService;
-
     MockMvc mockMvc;
 
     @BeforeEach
@@ -119,6 +117,16 @@ class IngredientsControllerTest {
                 .andExpect(view().name("recipe/ingredients/ingredientform"))
                 .andExpect(model().attributeExists("ingredient"))
                 .andExpect(model().attributeExists("uomList"));
+    }
+
+    @Test
+    void deleteIngredient() throws Exception {
+
+        mockMvc.perform(get("/recipe/2/ingredient/2/delete"))
+                .andExpect(status().is3xxRedirection())
+                .andExpect(view().name("redirect:/recipe/2/ingredients"));
+
+        verify(ingredientService, times(1)).deleteIngredientById(anyLong(), anyLong());
     }
 
     @Test

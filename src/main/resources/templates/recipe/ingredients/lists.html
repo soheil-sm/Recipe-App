@@ -70,7 +70,7 @@
                                 ' -- ' +  ingredient.description)}">testy goodness 3</td>
                                 <td><a href="#" th:href="@{'/recipe/'+${recipe.id}+'/ingredient/'+${ingredient.id}+'/show'}">View</a></td>
                                 <td><a href="#" th:href="@{'/recipe/'+${recipe.id}+'/ingredient/'+${ingredient.id}+'/update'}">Update</a></td>
-                                <td><a href="#" th:href="@{'/ingredient/'+${ingredient.id}+'/delete'}">delete</a></td>
+                                <td><a href="#" th:href="@{'/recipe/' +${recipe.id}+'/ingredient/'+${ingredient.id}+'/delete'}">delete</a></td>
                             </tr>
                         </table>
                     </div>

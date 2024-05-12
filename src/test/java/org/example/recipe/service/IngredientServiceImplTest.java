@@ -146,4 +146,31 @@ class IngredientServiceImplTest {
         assertEquals(NEW_DESCRIPTION, savedIngredient.getDescription());
         assertEquals(NEW_UOM_ID, savedIngredient.getUom().getId());
     }
+
+    @Test
+    void deleteIngredientById() {
+//        given
+        Recipe recipe = new Recipe();
+        recipe.setId(1L);
+
+        Ingredient ingredient = new Ingredient();
+        ingredient.setId(1L);
+        Ingredient ingredient1 = new Ingredient();
+        ingredient1.setId(2L);
+        Ingredient ingredient2 = new Ingredient();
+        ingredient2.setId(2L);
+
+        recipe.addIngredient(ingredient);
+        recipe.addIngredient(ingredient1);
+        recipe.addIngredient(ingredient2);
+
+        when(recipeRepository.findById(any())).thenReturn(Optional.of(recipe));
+
+//        when
+        ingredientService.deleteIngredientById(1L ,1L);
+
+//        given
+        verify(recipeRepository, times(1)).save(any(Recipe.class));
+        verify(recipeRepository, times(1)).findById(anyLong());
+    }
 }
