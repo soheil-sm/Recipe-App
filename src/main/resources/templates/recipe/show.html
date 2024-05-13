@@ -21,19 +21,31 @@
     <div class="col-7">
         <div class="card border-primary mb-3">
             <div class="card-header bg-primary">
-                <h4 class="card-title text-white" th:text="${recipe.description}">Recipe Description Here!</h4>
+                <div class="row">
+                    <div class="col-md-9">
+                        <h4 class="card-title text-white" th:text="${recipe.description}">Recipe Description Here!</h4>
+                    </div>
+                    <div class="col-md-2" style="margin-left: 70px">
+                        <a type="button" class="btn btn-light" href="#" th:href="@{'/recipe/'+${recipe.id}+'/image'}" role="button">Chang image</a>
+                    </div>
+                </div>
             </div>
             <div class="card-body bg-primary-subtle">
                 <div class="row">
                     <div class="col-md-3">
                         <h6>Categories:</h6>
                     </div>
-                    <div class="col-md-9">
+                    <div class="col-md-5">
                         <ul th:each="category: ${recipe.categories}">
                             <li th:text="${category.description}">Cat one</li>
                             <li th:remove="all">Cat tow</li>
                             <li th:remove="all">Cat three</li>
                         </ul>
+                    </div>
+                    <div class="col-md-4">
+                        <img src="../../static/images/images.jpeg"
+                            th:src="@{/images/images.jpeg}"
+                            width="220" height="200">
                     </div>
                 </div>
                 <br>
