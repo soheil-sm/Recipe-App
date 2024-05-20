@@ -48,8 +48,6 @@ public class RecipeController {
 
     @PostMapping("/recipe/")
     public String saveOrUpdate(@ModelAttribute RecipeCommand command) {
-        log.debug(String.valueOf(command.getNotes().getId()));
-        log.debug(String.valueOf(command.getNotes().getId()));
         RecipeCommand savedCommand = recipeService.saveRecipeCommand(command);
 
         log.debug("new recipe created");
@@ -76,6 +74,19 @@ public class RecipeController {
 
         modelAndView.setViewName("404error");
         modelAndView.addObject("exception", exception);
+
+        return modelAndView;
+    }
+
+    @ResponseStatus(HttpStatus.BAD_REQUEST)
+    @ExceptionHandler(NumberFormatException.class)
+    public ModelAndView handleNumberFormat(Exception exception) {
+        log.error(exception.getMessage());
+
+        ModelAndView modelAndView = new ModelAndView();
+
+        modelAndView.setViewName("400error");
+        modelAndView.addObject("exception", exception.getMessage());
 
         return modelAndView;
     }
