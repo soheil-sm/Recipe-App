@@ -99,7 +99,7 @@ public class IngredientServiceImpl implements IngredientService {
                         .filter(ingredient -> ingredient.getUom().getId().equals(command.getUom().getId()))
                         .findFirst();
             }
-            //to do check for fail
+            //todo check for fail
 
             return ingredientToIngredientCommand.convert(savedIngredient.get());
         }

@@ -45,6 +45,8 @@ public class RecipeController {
 
     @PostMapping("/recipe/")
     public String saveOrUpdate(@ModelAttribute RecipeCommand command) {
+        log.debug(String.valueOf(command.getNotes().getId()));
+        log.debug(String.valueOf(command.getNotes().getId()));
         RecipeCommand savedCommand = recipeService.saveRecipeCommand(command);
 
         log.debug("new recipe created");
