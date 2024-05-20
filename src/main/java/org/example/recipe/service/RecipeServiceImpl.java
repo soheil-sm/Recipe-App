@@ -5,6 +5,7 @@ import org.example.recipe.commands.RecipeCommand;
 import org.example.recipe.converters.RecipeCommandToRecipe;
 import org.example.recipe.converters.RecipeToRecipeCommand;
 import org.example.recipe.domain.Recipe;
+import org.example.recipe.exceptions.NotFoundException;
 import org.example.recipe.repositories.RecipeRepository;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -42,7 +43,7 @@ public class RecipeServiceImpl implements RecipeService {
 
         if (recipeOptional.isEmpty()) {
             //todo impl error handling
-            throw new RuntimeException("Recipe Not Found");
+            throw new NotFoundException("Recipe Not Found");
         }
         return recipeOptional.get();
     }
