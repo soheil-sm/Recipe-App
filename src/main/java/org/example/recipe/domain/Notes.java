@@ -17,6 +17,7 @@ public class Notes {
 
 //    @Lob : Large Objects, Clob : character large object, Blob : binary large object
     @Lob
+    @Column(columnDefinition = "LONGTEXT")
     private String recipeNotes;
 
 }

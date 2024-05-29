@@ -19,6 +19,7 @@ public class Recipe {
     private String source;
     private String url;
     @Lob
+    @Column(columnDefinition = "LONGTEXT")
     private String directions;
 
     @ManyToMany
@@ -33,6 +34,7 @@ public class Recipe {
     private Set<Ingredient> ingredients = new HashSet<>();
 
     @Lob
+    @Column(columnDefinition = "LONGBLOB")
     private Byte[] image;
 
     @Enumerated(value = EnumType.STRING)
