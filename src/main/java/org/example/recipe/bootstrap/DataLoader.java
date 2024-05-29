@@ -6,14 +6,18 @@ import org.example.recipe.repositories.CategoryRepository;
 import org.example.recipe.repositories.RecipeRepository;
 import org.example.recipe.repositories.UnitOfMeasureRepository;
 import org.springframework.context.ApplicationListener;
+import org.springframework.context.annotation.Profile;
 import org.springframework.context.event.ContextRefreshedEvent;
 import org.springframework.stereotype.Component;
 
 import java.math.BigDecimal;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Optional;
 
 @Slf4j
 @Component
+@Profile("default")
 public class DataLoader implements ApplicationListener<ContextRefreshedEvent> {
     private final UnitOfMeasureRepository unitOfMeasureRepository;
     private final RecipeRepository recipeRepository;
