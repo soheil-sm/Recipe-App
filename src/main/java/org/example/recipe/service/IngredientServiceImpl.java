@@ -31,7 +31,7 @@ public class IngredientServiceImpl implements IngredientService {
     }
 
     @Override
-    public IngredientCommand findCommandByRecipeIdAndIngredientId(Long recipeId, Long ingredientId) {
+    public IngredientCommand findCommandByRecipeIdAndIngredientId(String recipeId, String ingredientId) {
         Optional<Recipe> recipe = recipeRepository.findById(recipeId);
 
         if (recipe.isEmpty()) {
@@ -106,7 +106,7 @@ public class IngredientServiceImpl implements IngredientService {
     }
 
     @Override
-    public void deleteIngredientById(Long recipeId, Long ingredientId) {
+    public void deleteIngredientById(String recipeId, String ingredientId) {
         log.debug("Deleting ingredient: " + recipeId + ":" + ingredientId);
 
         Optional<Recipe> recipeOptional = recipeRepository.findById(recipeId);

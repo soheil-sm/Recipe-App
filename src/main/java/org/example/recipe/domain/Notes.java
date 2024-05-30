@@ -1,23 +1,12 @@
 package org.example.recipe.domain;
 
-import jakarta.persistence.*;
-import lombok.*;
+import lombok.Data;
+import lombok.EqualsAndHashCode;
 
 @Data
 @EqualsAndHashCode(exclude = {"recipe"})
-@Entity
 public class Notes {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
-
-//    @OneToOne
-//    private Recipe recipe;
-
-//    @Lob : Large Objects, Clob : character large object, Blob : binary large object
-    @Lob
-    @Column(columnDefinition = "LONGTEXT")
+    private String id;
     private String recipeNotes;
-
 }

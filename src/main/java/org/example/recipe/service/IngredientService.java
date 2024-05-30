@@ -4,9 +4,9 @@ import org.example.recipe.commands.IngredientCommand;
 
 public interface IngredientService {
 
-    IngredientCommand findCommandByRecipeIdAndIngredientId(Long recipeId, Long ingredientId);
+    IngredientCommand findCommandByRecipeIdAndIngredientId(String recipeId, String ingredientId);
 
     IngredientCommand saveIngredientCommand(IngredientCommand ingredientCommand);
 
-    void deleteIngredientById(Long recipeId, Long ingredientId);
+    void deleteIngredientById(String recipeId, String ingredientId);
 }

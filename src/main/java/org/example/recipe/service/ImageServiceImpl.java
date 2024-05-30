@@ -20,7 +20,7 @@ public class ImageServiceImpl implements ImageService {
     }
 
     @Override
-    public void saveImageFile(Long recipeId, MultipartFile multipartFile) throws IOException {
+    public void saveImageFile(String recipeId, MultipartFile multipartFile) throws IOException {
 
         log.debug("Received a file");
         try {

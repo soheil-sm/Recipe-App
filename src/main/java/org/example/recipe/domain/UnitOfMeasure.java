@@ -1,15 +1,10 @@
 package org.example.recipe.domain;
 
-import jakarta.persistence.*;
-import lombok.*;
+import lombok.Data;
 
 @Data
-@Entity
 public class UnitOfMeasure {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
-
+    private String id;
     private String description;
 }
