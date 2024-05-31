@@ -49,10 +49,9 @@
                                     <label>Categories:</label>
                                 </div>
                                 <div class="col-md-9 form-group">
-                                    <div class="radio mb-1">
+                                    <div class="radio mb-1" th:each="category : ${recipe.categories}">
                                         <label>
-                                            <input type="checkbox" value=""/>
-                                            Cat 1
+                                            <input style="margin-right: 5px" type="checkbox" th:text="${category.description}"/>
                                         </label>
                                     </div>
                                     <div class="radio" th:remove="all">
@@ -150,6 +149,17 @@
                                         ' - ' + ingredient.getDescription())}">1 Teaspoon of Sugar
                                         </li>
                                     </ul>
+<!--                                    <div th:each="ingredientEach, idx : ${recipe.getIngredients()}" >-->
+<!--                                        <input  type="hidden" th:field="*{ingredients[__${idx.index}__].id}" />-->
+<!--                                        <input  type="hidden" th:field="*{ingredients[__${idx.index}__].description}" />-->
+<!--                                        <input  type="hidden" th:field="*{ingredients[__${idx.index}__].amount}" />-->
+<!--                                        <input  type="hidden" th:field="*{ingredients[__${idx.index}__].uom.id}" />-->
+<!--                                    </div>-->
+<!--                                    <div th:if="${!recipe.categories.isEmpty()}">-->
+<!--                                        <div th:each="catEach, idx : ${recipe.categories}" >-->
+<!--                                            <input  type="hidden" th:field="*{categories[__${idx.index}__].id}" />-->
+<!--                                        </div>-->
+<!--                                    </div>-->
                                 </div>
                             </div>
                         </div>

@@ -39,17 +39,20 @@ public class IngredientServiceImpl implements IngredientService {
             log.debug("Recipe id not found. Id: " + recipeId);
         }
 
-        Optional<IngredientCommand> ingredientCommand = recipe.get().getIngredients().stream()
+        Optional<IngredientCommand> ingredientCommandOptional = recipe.get().getIngredients().stream()
                 .filter(ingredient -> ingredient.getId().equals(ingredientId))
                 .map(ingredientToIngredientCommand::convert)
                 .findFirst();
 
-        if (ingredientCommand.isEmpty()) {
+        if (ingredientCommandOptional.isEmpty()) {
             //todo impl error handling
             log.debug("Ingredient id not found. Id: " + ingredientId);
         }
 
-        return ingredientCommand.get();
+        IngredientCommand ingredientCommand = ingredientCommandOptional.get();
+        ingredientCommand.setRecipeId(recipeId);
+
+        return ingredientCommand;
     }
 
     @Override
@@ -83,16 +86,16 @@ public class IngredientServiceImpl implements IngredientService {
             //todo check for fail
             Recipe savedRecipe = recipeRepository.save(recipe);
 
-            Optional<Ingredient> savedIngredient = savedRecipe.getIngredients()
+            Optional<Ingredient> savedIngredientOptional = savedRecipe.getIngredients()
                     .stream()
                     .filter(ingredient -> ingredient.getId().equals(command.getId()))
                     .findFirst();
 
             //check by description
-            if (savedIngredient.isEmpty()) {
+            if (savedIngredientOptional.isEmpty()) {
                 //not totally safe... But best guess
                 log.debug("in the if statement");
-                savedIngredient = savedRecipe.getIngredients()
+                savedIngredientOptional = savedRecipe.getIngredients()
                         .stream()
                         .filter(ingredient -> ingredient.getAmount().equals(command.getAmount()))
                         .filter(ingredient -> ingredient.getDescription().equals(command.getDescription()))
@@ -101,7 +104,10 @@ public class IngredientServiceImpl implements IngredientService {
             }
             //todo check for fail
 
-            return ingredientToIngredientCommand.convert(savedIngredient.get());
+            IngredientCommand ingredientCommandSaved = ingredientToIngredientCommand.convert(savedIngredientOptional.get());
+            ingredientCommandSaved.setRecipeId(recipe.getId());
+
+            return ingredientCommandSaved;
         }
     }
 
@@ -124,7 +130,7 @@ public class IngredientServiceImpl implements IngredientService {
             if(ingredientOptional.isPresent()){
                 log.debug("found Ingredient");
                 Ingredient ingredientToDelete = ingredientOptional.get();
-                ingredientToDelete.setRecipe(null);
+//                ingredientToDelete.setRecipe(null);
                 recipe.getIngredients().remove(ingredientOptional.get());
                 recipeRepository.save(recipe);
             }
